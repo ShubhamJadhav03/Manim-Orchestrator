@@ -45,31 +45,8 @@ https://github.com/user-attachments/assets/527d7ac1-3cb2-4e1d-9298-41d8bf15ce78
 
 The application follows a **modern, microservices-oriented design**, ensuring scalability and fault isolation.
 
-```mermaid
-graph TD
-    subgraph Browser
-        A[React Frontend]
-    end
+![Manim ai](https://github.com/user-attachments/assets/0ef24f06-4f4f-4c83-a8e1-51aecb48aa6f)
 
-    subgraph Server
-        B[FastAPI Backend] --> C{Redis Queue}
-        C --> D[Celery Worker]
-        D --> E[Ollama - CodeLlama]
-        D --> F[Manim Engine]
-        F --> G[Rendered Videos]
-        B <--> H[PostgreSQL Database]
-        D <--> H
-    end
-
-    A -- "1️⃣ Send Text Prompt" --> B
-    B -- "2️⃣ Create Job → Return ID" --> A
-    A -- "3️⃣ Poll Job Status" --> B
-    B -- "4️⃣ Check DB" --> H
-    D -- "5️⃣ Update Job Status" --> H
-    D -- "6️⃣ Render Video" --> F
-    F -- "7️⃣ Output File" --> G
-    B -- "8️⃣ Return Video URL" --> A
-```
 
 ### 🧠 Workflow Summary
 1. The **React frontend** sends the user’s prompt to the **FastAPI backend**.  
